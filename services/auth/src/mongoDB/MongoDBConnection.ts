@@ -3,7 +3,7 @@ import mongoose, {Mongoose, ConnectOptions} from "mongoose";
 class MongoDBConnection {
     private static instance: MongoDBConnection;
     public mongooseInstance: Mongoose | null = null;
-    private mongooseOpt: ConnectOptions = {dbName: process.env.MongoDB_Name};
+    private mongooseOpt: ConnectOptions = {dbName: process.env.AUTH_MONGODB_NAME};
 
     private constructor() {
     }

@@ -25,8 +25,8 @@ class WebServer {
     }
 
     private serverInit = () => {
-        this.app && this.app.listen(process.env.WEB_SERVER_PORT || 5000, () => {
-            console.log(`✅ Server is running on Port: ${process.env.WEB_SERVER_PORT}`);
+        this.app && this.app.listen(process.env.AUTH_SERVICE_PORT || 5000, () => {
+            console.log(`✅ Server is running on Port: ${process.env.AUTH_SERVICE_PORT}`);
         });
     }
 
