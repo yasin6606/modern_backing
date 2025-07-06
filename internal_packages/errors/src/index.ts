@@ -1,2 +1,2 @@
 export * from './constants/errors';
-export * from './utils/throw-error';
+export default './utils/throw-error';
