@@ -1,6 +1,11 @@
 import {ERRORS, ErrorCode} from '../constants/errors';
+import {Response} from "express";
 
-const throwError = (code: ErrorCode, details?: any): never => {
+export const sendError = (code: ErrorCode, res: Response, details?: any): void => {
+    res.status(ERRORS[code].status).send({code, details});
+}
+
+export const throwError = (code: ErrorCode, details?: any): never => {
     const {status, message} = ERRORS[code];
     const err = new Error(message) as any;
 
@@ -10,5 +15,3 @@ const throwError = (code: ErrorCode, details?: any): never => {
 
     throw err;
 }
-
-export default throwError;
