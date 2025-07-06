@@ -1,0 +1,10 @@
+.idea
+db
+
+client/node_modules
+client/build
+client/package-lock.json
+
+services/auth/node_modules
+services/auth/build
+services/auth/package-lock.json
