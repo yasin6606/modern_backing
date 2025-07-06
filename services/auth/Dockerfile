@@ -13,7 +13,7 @@ FROM node:22.14-alpine
 WORKDIR /home
 
 COPY --from=build /home/node/build ./build
-COPY node_modules node_modules
+COPY --from=build /home/node/node_modules ./node_modules
 COPY package.json .
 
 CMD ["npm", "run", "start"]
