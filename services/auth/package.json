@@ -1,12 +1,12 @@
 {
   "name": "auth",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "build/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./build",
-    "build": "npm run clean && tsc",
-    "start": "npm run build && node ./build/server.js",
+    "build": "npm run clean && webpack",
+    "start": "node ./build/server.js",
     "dev": "npm run build && node --env-file=../../infrastructure/envs/local.env ./build/server.js"
   },
   "author": "",
@@ -28,6 +28,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/mongoose": "^5.11.96",
-    "typescript": "^5.8.3"
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
   }
 }

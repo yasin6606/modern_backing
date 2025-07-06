@@ -23,7 +23,6 @@ services:
       - "5001:5001"
     env_file:
       - /home/yasin/Documents/learning/micro_service/infrastructure/envs/.env
-    command: npm run start
     networks:
       - share_network
     depends_on:

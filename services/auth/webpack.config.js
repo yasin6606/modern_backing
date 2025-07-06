@@ -20,4 +20,7 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
     },
     target: 'node',
+    performance: {
+        hints: false, // or 'warning' | false
+    },
 };
