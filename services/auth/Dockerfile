@@ -3,8 +3,9 @@ LABEL authors="yasin"
 
 WORKDIR /home/node
 
-COPY .env .
-COPY package.json .
+COPY package.json package.json
+COPY index.ts index.ts
+COPY tsconfig.json tsconfig.json
 COPY src src
 
 RUN npm install
