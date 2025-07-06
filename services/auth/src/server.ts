@@ -1,7 +1,7 @@
-import express, {Express, Request, Response} from "express";
+import express, {Express} from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import routesSource from "./routes";
+import routesSource from "./routes/index";
 import RabbitMQConnection from "./rabbitmq/RabbitMQConnection";
 import MongoDBConnection from "./mongoDB/MongoDBConnection";
 import "dotenv/config.js"
@@ -53,3 +53,6 @@ class WebServer {
 }
 
 export default WebServer;
+
+// Entrypoint
+new WebServer();

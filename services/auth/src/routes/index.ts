@@ -1,5 +1,5 @@
 import {Router} from "express";
-import v1Route from "./v1";
+import v1Route from "../routes/v1";
 
 const apiRoute: Router = Router({caseSensitive: true});
 

@@ -1,5 +1,5 @@
 import {Router} from "express";
-import userManagementRouter from "./userManagement/userManagement.route";
+import userManagementRouter from "../../routes/v1/userManagement/userManagement.route";
 
 const v1Route: Router = Router({caseSensitive: true});
 
