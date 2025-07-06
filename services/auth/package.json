@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./build",
     "build": "npm run clean && tsc",
-    "start": "npm run build && node ./build/server.js"
+    "start": "npm run build && node ./build/server.js",
+    "dev": "npm run build && node --env-file=../../infrastructure/envs/local.env ./build/server.js"
   },
   "author": "",
   "license": "ISC",

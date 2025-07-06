@@ -1,4 +1,4 @@
-import express, {Express} from "express";
+import express, {Express, Request, Response} from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import routesSource from "./routes/index";
@@ -31,16 +31,18 @@ class WebServer {
     }
 
     private setRoutes = () => {
-        this.app?.use("/api", routesSource);
-        // this.app?.use("*", (req: Request, res: Response) => {
-        //     console.warn(`404 Not Found: ${req.method} ${req.originalUrl}`);
-        //     res.status(404).json({
-        //         status: 404,
-        //         message: "Route not found",
-        //         method: req.method,
-        //         path: req.originalUrl,
-        //     });
-        // });
+        this.app?.use("/auth", routesSource);
+
+        // Garbage routes
+        this.app?.use(/.*/, (req: Request, res: Response) => {
+            console.warn(`404 Not Found: ${req.method} ${req.originalUrl}`);
+            res.status(404).json({
+                status: 404,
+                message: "Route not found",
+                method: req.method,
+                path: req.originalUrl,
+            });
+        });
     }
 
     private setMongo = async () => {

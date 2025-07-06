@@ -1,10 +1,10 @@
 import {Request, Response, NextFunction} from "express";
 
-class UserManagementController {
+class SignupController {
     public register = async (req: Request, res: Response, next: NextFunction) => {
         console.log(req.body);
-        res.send("yes");
+        res.send("signup");
     }
 }
 
-export default UserManagementController;
+export default SignupController;
