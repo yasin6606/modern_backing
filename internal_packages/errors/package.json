@@ -1,14 +1,21 @@
 {
-  "name": "errors",
+  "name": "@banking/errors",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "clean": "rimraf build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/yasin6606/modern_backing.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0"
   },
   "private": true
 }
