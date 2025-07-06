@@ -8,3 +8,7 @@ client/package-lock.json
 services/auth/node_modules
 services/auth/build
 services/auth/package-lock.json
+
+internal_packages/errors/package-lock.json
+internal_packages/errors/node_modules
+internal_packages/errors/build
