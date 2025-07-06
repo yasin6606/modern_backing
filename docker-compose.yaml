@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     env_file:
-      - /home/yasin/Documents/learning/micro_service/client/.env
+      - /home/yasin/Documents/learning/micro_service/infrastructure/envs/.env
     networks:
       - share_network
     depends_on:
@@ -19,7 +19,7 @@ services:
       - 5000
       - 5001
     env_file:
-      - /home/yasin/Documents/learning/micro_service/services/auth/.env
+      - /home/yasin/Documents/learning/micro_service/infrastructure/envs/.env
     command: npm run start
     networks:
       - share_network
