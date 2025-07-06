@@ -17,5 +17,11 @@
     "typescript": "^5.0.0",
     "rimraf": "^5.0.0"
   },
+  "exports": {
+    ".": {
+      "types": "./build/index.js",
+      "require": "./build/index.d.ts"
+    }
+  },
   "private": true
 }
