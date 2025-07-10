@@ -1,18 +1,20 @@
 import {Request, Response, NextFunction} from "express";
-import {User} from "../mongoDB/models/user.model";
-import {sendError, ERRORS} from "central_error_handler";
+import {Unauthorized} from "http-errors";
+import {compare} from "bcryptjs";
 
-const emailCheckingMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const {email} = req.body;
+const passwordCheckingMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    const {password, user} = req.body;
 
-    const user = await User.findOne({email});
+    const comp_res: boolean = await compare(password, user.password);
 
-    if (!user) {
-        sendError(ERRORS.AUTH_INVALID.code, res, ERRORS.AUTH_INVALID);
+    if (!comp_res) {
+        const {status, message, name} = new Unauthorized("Login failed!");
+        res.status(status).json({message, name});
         return;
     }
 
+    req.body = {...req.body.user.toObject(), password: null, __v: null};
     next();
 }
 
-export default emailCheckingMiddleware;
+export default passwordCheckingMiddleware;

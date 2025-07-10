@@ -1,18 +1,20 @@
 import {Request, Response, NextFunction} from "express";
-// import errorsList from "../errorHandling/errorsList";
+import {User} from "../mongoDB/models/user.model";
+import {Unauthorized} from "http-errors";
 
-const usernameCheckingMiddleware = (req: Request, res: Response, next: NextFunction): void => {
-    const {username} = req.body;
+const emailCheckingMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    const {email} = req.body;
 
-    const len: number = username.length;
+    const user = await User.findOne({email}).select("+password");
 
-    if (len < 3) {
-        // return res.status(errorsList).send("length error");
-        res.status(403).send("length error");
+    if (!user) {
+        const {status, message, name} = new Unauthorized("User does not exist!");
+        res.status(status).json({message, name});
         return;
     }
 
+    req.body = {...req.body, user};
     next();
 }
 
-export default usernameCheckingMiddleware;
+export default emailCheckingMiddleware;
