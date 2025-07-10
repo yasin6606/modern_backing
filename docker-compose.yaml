@@ -1,7 +1,7 @@
 services:
   api_gateway:
     build:
-      context: /home/yasin/Documents/learning/micro_service
+      context: /home/yasin/Documents/projects/micro_service
       dockerfile: infrastructure/apiGateway/Dockerfile
     ports:
       - "80:80"
@@ -13,7 +13,7 @@ services:
       - auth
   auth:
     build:
-      context: /home/yasin/Documents/learning/micro_service/services/auth
+      context: /home/yasin/Documents/projects/micro_service/services/auth
       dockerfile: Dockerfile
     expose:
       - 5000
@@ -39,7 +39,7 @@ services:
     networks:
       - share_network
     volumes:
-      - /home/yasin/Documents/learning/micro_service/db:/data/
+      - /home/yasin/Documents/projects/micro_service/db:/data/
     healthcheck:
       test: [ "CMD", "mongosh", "--eval", "db.runCommand('ping').ok" ]
       interval: 10s
