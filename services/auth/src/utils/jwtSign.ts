@@ -11,7 +11,7 @@ const signOpt: SignOptions = {
     expiresIn: (process.env.JWT_EXPIRES_IN as StringValue) || "15m"
 };
 
-const signFunc = (payload: object): string => {
+const signFunc = (payload: string | object): string => {
     if (!JWT_SECRET_KEY) throw Error("JWT_SECRET_KEY");
     return sign(payload, JWT_SECRET_KEY, signOpt);
 }
