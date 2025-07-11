@@ -6,15 +6,15 @@ services:
     ports:
       - "80:80"
     env_file:
-      - /home/yasin/Documents/projects/micro_service/infrastructure/envs/.env
+      - /home/yasin/Documents/projects/micro_service/infrastructure/envs/.env.client
     networks:
       - share_network
     depends_on:
       - auth
   auth:
     build:
-      context: /home/yasin/Documents/projects/micro_service/services/auth
-      dockerfile: Dockerfile
+      context: /home/yasin/Documents/projects/micro_service
+      dockerfile: services/auth/Dockerfile
     expose:
       - 5000
       - 5001
@@ -22,7 +22,8 @@ services:
       - "5000:5000"
       - "5001:5001"
     env_file:
-      - /home/yasin/Documents/projects/micro_service/infrastructure/envs/.env
+      - /home/yasin/Documents/projects/micro_service/infrastructure/envs/.env.common
+      - /home/yasin/Documents/projects/micro_service/infrastructure/envs/.env.auth
     networks:
       - share_network
     depends_on:

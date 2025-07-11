@@ -13,7 +13,11 @@ const passwordCheckingMiddleware = async (req: Request, res: Response, next: Nex
         return;
     }
 
-    req.body = {...req.body.user.toObject(), password: null, __v: null};
+    if (req.body && req.body.user && req.body.user.toObject === "function")
+        req.body = {...req.body.user.toObject(), password: null, __v: null};
+    else
+        req.body = {...req.body.user, password: null, __v: null};
+
     next();
 }
 
