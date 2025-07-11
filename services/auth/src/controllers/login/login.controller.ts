@@ -7,7 +7,7 @@ class LoginController {
         try {
             const token = signFunc(req.body)
 
-            res.status(200).send(token);
+            res.status(200).json({token});
         } catch (e) {
             const {status, message, name} = new InternalServerError("Login succeeded, but failed to create token!");
             res.status(status).json({message, name});
